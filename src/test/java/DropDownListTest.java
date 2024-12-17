@@ -1,11 +1,7 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import ru.praktikum_services.qa_scooter.HomePageScooter;
-
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -36,10 +32,7 @@ public class DropDownListTest extends SeleniumTestBase {
     public void checkTextList(){
         driver.get("https://qa-scooter.praktikum-services.ru");
         HomePageScooter homePageScooter = new HomePageScooter(driver);
-        By titleList = homePageScooter.getTitleList(numberList);
-        WebElement element = driver.findElement(titleList);
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-        element.click();
+        homePageScooter.clickDropList(numberList);
         String actuallyText = homePageScooter.getDropDownListText(numberList);
         assertEquals(expectedTextList, actuallyText);
     }

@@ -46,4 +46,11 @@ public class HomePageScooter {
                 .until(ExpectedConditions.visibilityOfElementLocated(By.id(dropDownListText)));
         return driver.findElement(By.id(dropDownListText)).getText();
     }
+
+    public void clickDropList(int numberList) {
+        By titleList = getTitleList(numberList);
+        WebElement element = driver.findElement(titleList);
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        element.click();
+    }
 }
